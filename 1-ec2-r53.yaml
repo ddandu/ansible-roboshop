@@ -1,0 +1,26 @@
+- name: create ec2 and r53
+  hosts: local
+  connection: local
+  vars:
+    ami_id: ami-0220d79f3f480ecf5
+    sg_id: "sg-02e4e006dfaceac5c"
+    zone_id: "Z08998102AQ5DAQ38NK0N" # replace with your ID
+    domain_name: "devresh.online"
+    instances:
+      - mongodb
+
+  tasks:
+    - name: create ec2 instance
+      amazon.aws.ec2_instance:
+        name: "{{ item }}"
+        instance_type: t3.micro
+        security_group: "{{ sg_id }}"
+        image_id: "{{ ami_id }}"
+        tags:
+          Name: "{{ item }}"
+      loop: "{{ instances }}"
+      register: ec2_output
+
+    - name: print the ec2 output
+      ansible.builtin.debug:
+        msg: "{{ ec2_output }}"
