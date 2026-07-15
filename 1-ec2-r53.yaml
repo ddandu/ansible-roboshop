@@ -6,7 +6,7 @@
     sg_id: "sg-02e4e006dfaceac5c"
     zone_id: "Z08998102AQ5DAQ38NK0N" # replace with your ID
     domain_name: "devresh.online"
-    instances:
+    # instances:
       # - mongodb
       # - redis
       # - mysql
