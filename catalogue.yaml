@@ -81,7 +81,7 @@
   #     msg: "{{ catalogue_output }}"
 
   - name: load products into mongodb
-    ansible.builtin.shell: mongosh --host mongodb.devresh.onlinen </app/db/master-data.js
+    ansible.builtin.shell: mongosh --host mongodb.devresh.online </app/db/master-data.js
     when: catalogue_output.stdout | int < 0
 
   # - name: start and enable cataalogue
